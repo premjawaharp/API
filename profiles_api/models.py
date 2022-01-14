@@ -17,7 +17,7 @@ class UserProfileManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self.db)
 
-        return User
+        return user
 
     def create_superuser(self,email, name, password):
         """create and save superuser"""
@@ -29,8 +29,8 @@ class UserProfileManager(BaseUserManager):
 
 
 
-
 class UserProfile(AbstractBaseUser, PermissionsMixin):
+    """DB model for users in th system"""
 
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
